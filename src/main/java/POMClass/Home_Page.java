@@ -53,11 +53,16 @@ public class Home_Page extends UtilClass
    public void Addtocart()
    {
 	   
-	   String allWindows = driver.getWindowHandle();
+	   Set <String> allWindows = driver.getWindowHandles();
 //	   List<String> address1=new ArrayList<String>(allWindows); 
 //   	   driver.switchTo().window(address1.get(0));
    	   
-    driver.switchTo().window(allWindows);
+   	Iterator<String> itr = allWindows.iterator();
+   	
+   	while(itr.hasNext())
+   	{
+   		driver.switchTo().window(itr.next());
+   	}
 	   
 	   AddToCart.click();
 	   
